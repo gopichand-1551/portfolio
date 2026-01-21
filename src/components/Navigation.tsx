@@ -132,25 +132,53 @@ export function Navigation() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[var(--bg-primary)] border-b border-[var(--border)]"
+            className="md:hidden bg-[var(--bg-primary)] border-b border-[var(--border)] overflow-hidden"
           >
             <Container>
-              <ul className="py-6 space-y-6">
-                {navItems.map((item) => {
-                  const Icon = (Icons as unknown as Record<string, Icons.LucideIcon>)[item.icon] || Icons.Circle;
-                  return (
-                    <li key={item.href}>
-                      <button
-                        onClick={() => scrollToSection(item.href)}
-                        className="w-full flex items-center gap-4 text-left py-2 text-white hover:text-[var(--accent)] text-lg font-bold transition-all"
-                      >
-                        <Icon size={22} className="text-[var(--accent)]" />
-                        {item.label}
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
+              <div className="py-8 flex flex-col gap-8">
+                {/* Profile Header in Mobile Menu */}
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10">
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[var(--accent)]">
+                    <Image 
+                      src={personalInfo.profileImage} 
+                      alt={personalInfo.name} 
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-white leading-none mb-1">{personalInfo.firstName}</h3>
+                    <p className="text-[10px] text-[var(--accent)] font-medium uppercase tracking-wider">Available for work</p>
+                  </div>
+                </div>
+
+                <ul className="space-y-1">
+                  {navItems.map((item) => {
+                    const Icon = (Icons as unknown as Record<string, Icons.LucideIcon>)[item.icon] || Icons.Circle;
+                    return (
+                      <li key={item.href}>
+                        <button
+                          onClick={() => scrollToSection(item.href)}
+                          className="w-full flex items-center gap-4 text-left p-3 rounded-xl text-white hover:text-[var(--accent)] hover:bg-white/5 text-base font-bold transition-all group"
+                        >
+                          <Icon size={20} className="text-[var(--accent)] group-hover:scale-110 transition-transform" />
+                          {item.label}
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+
+                {/* Mobile Socials or CTA */}
+                <div className="pt-4 border-t border-white/10">
+                  <button 
+                    onClick={() => scrollToSection('#contact')}
+                    className="w-full py-4 rounded-xl bg-[var(--accent)] text-[var(--bg-primary)] font-bold text-center hover:opacity-90 transition-opacity"
+                  >
+                    Let&apos;s Talk
+                  </button>
+                </div>
+              </div>
             </Container>
           </motion.div>
         )}

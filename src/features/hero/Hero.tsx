@@ -33,7 +33,7 @@ export function Hero() {
       />
 
       <Container className="relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: Content */}
           <div>
             {/* Greeting */}
@@ -95,7 +95,7 @@ export function Hero() {
 
             {/* Stats */}
             <ScrollReveal delay={0.6} once={false}>
-              <div className="mt-12 grid grid-cols-3 gap-6">
+              <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <div className="text-center sm:text-left">
                   <span className="text-3xl font-bold gradient-text">3+</span>
                   <p className="text-sm text-[var(--text-secondary)]">Projects<br/>Completed</p>
@@ -113,12 +113,12 @@ export function Hero() {
           </div>
 
           {/* Right: Profile Image with 3D Animated Arc */}
-          <div className="hidden lg:flex justify-center items-center">
+          <div className="flex justify-center items-center lg:flex">
             <ScrollReveal delay={0.3} direction="right" once={false}>
-              <div className="relative w-[500px] h-[500px] flex items-center justify-center" style={{ perspective: '1000px' }}>
+              <div className="relative w-full max-w-[300px] sm:max-w-[400px] lg:max-w-[500px] aspect-square flex items-center justify-center mx-auto" style={{ perspective: '1000px' }}>
                 {/* 3D Rotating Arc - Outer Ring */}
                 <motion.div
-                  className="absolute w-[400px] h-[400px] rounded-full"
+                  className="absolute w-[80%] h-[80%] rounded-full"
                   style={{
                     border: '6px solid transparent',
                     borderTopColor: '#00d4ff',
@@ -138,7 +138,7 @@ export function Hero() {
                 
                 {/* 3D Rotating Arc - Inner Ring */}
                 <motion.div
-                  className="absolute w-[360px] h-[360px] rounded-full"
+                  className="absolute w-[72%] h-[72%] rounded-full"
                   style={{
                     border: '4px solid transparent',
                     borderTopColor: '#06b6d4',
@@ -158,7 +158,7 @@ export function Hero() {
                 
                 {/* Static arc glow behind profile */}
                 <div 
-                  className="absolute w-[380px] h-[200px] rounded-t-full -translate-y-16"
+                  className="absolute w-[76%] h-[40%] rounded-t-full -translate-y-[15%]"
                   style={{
                     background: 'linear-gradient(to top, transparent, rgba(0, 212, 255, 0.2), rgba(0, 212, 255, 0.4))',
                     filter: 'blur(20px)',
@@ -167,7 +167,7 @@ export function Hero() {
                 
                 {/* Pulsing glow behind profile */}
                 <motion.div
-                  className="absolute w-96 h-96 rounded-full"
+                  className="absolute w-[75%] h-[75%] rounded-full"
                   style={{
                     background: 'radial-gradient(circle, rgba(0, 212, 255, 0.2) 0%, transparent 60%)',
                   }}
@@ -183,9 +183,9 @@ export function Hero() {
                 />
                 
                 {/* Profile Image Container */}
-                <div className="relative z-10">
+                <div className="relative z-10 w-full flex justify-center">
                   <motion.div 
-                    className="relative w-80 h-80 rounded-full overflow-hidden border-4 border-[var(--accent)] shadow-[0_0_50px_rgba(0,212,255,0.6),0_0_100px_rgba(0,212,255,0.3)]"
+                    className="relative w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-[var(--accent)] shadow-[0_0_50px_rgba(0,212,255,0.6),0_0_100px_rgba(0,212,255,0.3)]"
                     animate={{
                       boxShadow: [
                         '0 0 50px rgba(0,212,255,0.6), 0 0 100px rgba(0,212,255,0.3)',
@@ -205,7 +205,7 @@ export function Hero() {
                       fill
                       className="object-cover object-top"
                       priority
-                      sizes="320px"
+                      sizes="(max-width: 640px) 192px, (max-width: 1024px) 256px, 320px"
                     />
                   </motion.div>
                 </div>

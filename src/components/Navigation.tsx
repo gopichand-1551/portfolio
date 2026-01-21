@@ -63,7 +63,7 @@ export function Navigation() {
               />
             </div>
             <span className="text-xl font-bold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">
-              <span className="gradient-text">{personalInfo.firstName}</span>
+              <span className="gradient-text">Portfolio</span>
               <span className="text-[var(--accent)]">.</span>
             </span>
           </a>
